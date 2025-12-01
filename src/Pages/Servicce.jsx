@@ -15,9 +15,7 @@ const Servicce = () => {
     return (
         <>
             <div className='container m-auto'>
-                <div className='text-4xl mt-30 mb-0 text-center py-4 px-2 bg-amber-700'>
-                    <h1>hello this is mini bazar</h1>
-                </div>
+
             
 
                 <div className='flex flex-wrap  justify-between gap-2 '>
