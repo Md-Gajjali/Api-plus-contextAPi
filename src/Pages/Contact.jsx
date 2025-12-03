@@ -10,9 +10,8 @@ import { AppProvider } from '../ContextApi';
 const Contact = () => {
     const [product, setProduct] = useState([])
 
-    const value = useContext(AppProvider)
-    
-    console.log(value);
+    const {apon, setApon} = useContext(AppProvider)
+
     
 
     useEffect(() => {
@@ -25,8 +24,9 @@ const Contact = () => {
     
 return (
     <div className='container m-auto flex flex-wrap justify-between gap-2'>
-        <div>
-            <h1>{value}</h1>
+        <div className='absolute top-20 left-20'>
+            <h1>{apon}</h1>
+            <button onClick={()=> setApon("this is ......")}>click</button>
         </div>
         {
             product.map((items)=>{
