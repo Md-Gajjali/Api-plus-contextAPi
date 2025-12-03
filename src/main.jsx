@@ -8,7 +8,8 @@ import Rootlayout from './Rootlayout.jsx';
 import About from './Pages/About.jsx';
 import Contact from './Pages/Contact.jsx';
 import Servicce from './Pages/Servicce.jsx';
-import ContextApi from './ContextApi.jsx';
+import { store } from '../src/Store/Store.js'
+import { Provider } from 'react-redux'
 
 
 const router = createBrowserRouter([
@@ -27,8 +28,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ContextApi>
+    <Provider store={store}>
      <RouterProvider router={router} />
-    </ContextApi>
+    </Provider>
   </StrictMode>,
 )

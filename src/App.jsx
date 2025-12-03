@@ -4,36 +4,64 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navber from './Componets/Navber'
 import Cards from './Componets/Cards'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement } from './Slices/counterSlice'
+
 
 function App() {
 
-  const[product,setProduct]=useState([])
+  const [product, setProduct] = useState([])
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+  console.log(count);
 
-  useEffect(()=>{
-    fetch('https://dummyjson.com/recipes')
-    .then(res => res.json())
-    .then((data)=> setProduct(data.recipes));
-  },[])
 
-  
+
+
+  // useEffect(() => {
+  //   fetch('https://dummyjson.com/recipes')
+  //     .then(res => res.json())
+  //     .then((data) => setProduct(data.recipes));
+  // }, [])
+
+
 
   return (
     <>
-    <div className='flex flex-wrap justify-between gap-2 container m-auto'>
-      {
-        product.map((items)=>{
-          return(
-            <Cards 
-            title={items.name}
-            imgSrc={items.image}
-            rating={items.rating}
-            price={items.userId}
-            />
+      {/* <div className='flex flex-wrap justify-between gap-2 container m-auto'>
+        {
+          product.map((items) => {
+            return (
+              <Cards
+                key={items.id}
+                title={items.name}
+                imgSrc={items.image}
+                rating={items.rating}
+                price={items.userId}
+              />
 
-          )
-        })
-      }
-    </div>
+            )
+          })
+        }
+      </div> */}
+
+      <div className='container m-auto mt-30'>
+        <div>
+          <button
+            aria-label="Increment value"
+            onClick={() => dispatch(increment())}
+          >
+            Increment
+          </button>
+          <span>{count}</span>
+          <button
+            aria-label="Decrement value"
+            onClick={() => dispatch(decrement())}
+          >
+            Decrement
+          </button>
+        </div>
+      </div>
     </>
   )
 }
