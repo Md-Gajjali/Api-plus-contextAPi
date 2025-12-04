@@ -8,8 +8,9 @@ import Rootlayout from './Rootlayout.jsx';
 import About from './Pages/About.jsx';
 import Contact from './Pages/Contact.jsx';
 import Servicce from './Pages/Servicce.jsx';
-import { store } from '../src/Store/Store.js'
+import { store } from './Store/Store.js';
 import { Provider } from 'react-redux'
+
 
 
 const router = createBrowserRouter([

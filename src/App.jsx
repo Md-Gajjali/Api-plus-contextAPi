@@ -5,15 +5,17 @@ import './App.css'
 import Navber from './Componets/Navber'
 import Cards from './Componets/Cards'
 import { useSelector, useDispatch } from 'react-redux'
-import { increment, decrement } from './Slices/counterSlice'
+import { decrement, increment  } from './Slices/counterSlice'
+
 
 
 function App() {
 
-  const [product, setProduct] = useState([])
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()
-  console.log(count);
+  // const [product, setProduct] = useState([])
+
+    const count = useSelector((state) => state.counter.value)
+    const dispatch = useDispatch()
+
 
 
 
@@ -45,23 +47,25 @@ function App() {
         }
       </div> */}
 
-      <div className='container m-auto mt-30'>
-        <div>
-          <button
-            aria-label="Increment value"
-            onClick={() => dispatch(increment())}
-          >
-            Increment
-          </button>
-          <span>{count}</span>
-          <button
-            aria-label="Decrement value"
-            onClick={() => dispatch(decrement())}
-          >
-            Decrement
-          </button>
-        </div>
+       <div className='container m-auto mt-30'>
+      <div>
+        <button
+          aria-label="Increment value"
+          onClick={() => dispatch( increment ())}
+        >
+          Increment
+        </button>
+        <span>{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => dispatch( decrement ())}
+        >
+          Decrement
+        </button>
+        
       </div>
+    </div>
+
     </>
   )
 }
