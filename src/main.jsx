@@ -10,6 +10,8 @@ import Contact from './Pages/Contact.jsx';
 import Servicce from './Pages/Servicce.jsx';
 import { store } from './Store/Store.js';
 import { Provider } from 'react-redux'
+import { ToastContainer } from 'react-toastify';
+import './FirebeseConfig'
 
 
 
@@ -30,7 +32,8 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-     <RouterProvider router={router} />
+      <ToastContainer />
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 )
