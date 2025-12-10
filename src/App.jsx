@@ -20,9 +20,10 @@ function App() {
   // const dispatch = useDispatch()
 
   const [task, setTask] = useState("")
+  const [Todo, setTodo] = useState([])
 
-  const [cng, setCng] = useState("")
-  const [error, setError] = useState("")
+  // const [cng, setCng] = useState("")
+  // const [error, setError] = useState("")
 
   const notify = () => {
     task == "" ?
@@ -56,32 +57,52 @@ function App() {
 
 
   const handleClick = (e) => {
+
     e.preventDefault()
+
     if (task == "") {
       notify()
     } else {
+
       const db = getDatabase();
-      set(push(ref(db, "todo"), {
-        Todos: task
-      }).then(
-        notify(),
-        setTask("")
-      ))
+      const NewRef = push(ref(db, "Todos"),)
+
+      set(NewRef, {
+        Todos: task,
+      }).then(() => {
+        notify();
+        setTask("");
+      })
+
     }
 
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     const db = getDatabase();
-    const TodoRef = ref(db, "todo");
+    const TodoRef = ref(db, "Todos");
+    const Arry = []
+      console.log(Arry);
+
+    
     onValue(TodoRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
+      // const data = snapshot.val();
+      snapshot.forEach((item)=>{
+        Arry.push(item.val())
+        setTodo(Arry)
+        
+      })
+      // Arry.push(data)
+      // setTodo(Arry)
       
     });
-  },[])
+  }, [])
 
+  console.log(Todo);
+  
+ 
+  
 
   // useEffect(() => {
   //   fetch('https://dummyjson.com/recipes')
@@ -152,18 +173,29 @@ function App() {
 
         <button
           type="submit"
-          className="text-white bg-blue-600 block m-auto w-[130px] hover:bg-blue-700 rounded-lg text-sm px-4 py-2.5"
+          className="text-white bg-blue-600 block m-auto w-[130px] hover:bg-blue-800 rounded-lg text-sm px-4 py-2.5"
           onClick={handleClick}
         >
           Submit
         </button>
 
-          <div className='mt-5'>
-            <ul className="w-48 text-sm  w-full font-medium text-heading bg-neutral-primary-soft  rounded-base ">
-              <li className="w-full px-4 py-2 border-b border-default rounded-t-lg"></li>
-            </ul>
-          </div>
+        <div className='mt-5'>
+          <ul className=" text-sm  w-full font-medium text-heading bg-neutral-primary-soft  rounded-base ">
+            {
+              Todo.map((item)=>{
+                return(
+
+                  <li className="w-full px-4 py-2 border-b border-default rounded-t-lg ">{item.Todos}</li>
+                )
+              })
+            }
+          </ul>
+        </div>
       </form>
+
+      <div>
+        <li>..</li>
+      </div>
 
     </>
   )
