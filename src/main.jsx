@@ -11,7 +11,7 @@ import Servicce from './Pages/Servicce.jsx';
 import { store } from './Store/Store.js';
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
-import './FirebeseConfig'
+import './FirebeseConfig.js'
 
 
 
