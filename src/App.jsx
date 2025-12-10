@@ -193,9 +193,6 @@ function App() {
         </div>
       </form>
 
-      <div>
-        <li>..</li>
-      </div>
 
     </>
   )
